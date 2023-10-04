@@ -6,17 +6,18 @@ class Patient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Model to manage patient information.'
     
-    partner = fields.Many2one(comodel_name='res.partner')
+    partner = fields.Many2one(comodel_name='res.partner', ondelete='cascade')
     name = fields.Char()
-    therapist = fields.Many2one(comodel_name='medical.therapist')
+    therapist = fields.Many2one(comodel_name='medical.therapist', ondelete='set null')
     clinical_information = fields.Html()
     
     is_couple = fields.Boolean(default=False)
-    couple_member_1 = fields.Many2one(comodel_name='medical.patient', domain=[('couple','=',False)])
-    couple_member_2 = fields.Many2one(comodel_name='medical.patient', domain=[('couple','=',False)])
+    couple_member_1 = fields.Many2one(comodel_name='medical.patient', domain=[('couple','=',False)], ondelete='restrict')
+    couple_member_2 = fields.Many2one(comodel_name='medical.patient', domain=[('couple','=',False)], ondelete='restrict')
     
     couple = fields.Many2one(comodel_name='medical.patient', compute='_compute_couple')
     couple_counterpart = fields.Many2one(comodel_name='medical.patient', compute='_compute_couple')
+    patient_provided_info = fields.One2many(comodel_name='medical.patient.data', inverse_name='patient', readonly=True)
     
     def name_get(self):
         result = []
@@ -56,3 +57,10 @@ class Patient(models.Model):
             else:
                 record.couple_counterpart = False
                 
+class PatientProvidedData(models.Model):
+    _name = 'medical.patient.data'
+    _description = 'Data provided by the patient directly'
+    
+    patient = fields.Many2one(comodel_name='medical.patient')
+    date = fields.Date()
+    data = fields.Html(string='Information from patient')
