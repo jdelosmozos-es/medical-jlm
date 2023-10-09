@@ -2,6 +2,8 @@ from . import patient
 from . import therapist
 from . import res_partner
 from . import therapist_calendar
-from . import survey_user_input
-from . import survey_survey
+from . import survey_user_input_patient
+from . import survey_user_input_partner
+from . import survey_survey_partner
+from . import survey_survey_patient
 from . import patient_tag

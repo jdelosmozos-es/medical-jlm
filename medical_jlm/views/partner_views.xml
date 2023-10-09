@@ -10,6 +10,11 @@
                 	<span>Patient</span>
                 </button>
         	</xpath>
+        	<xpath expr="//sheet" position="before">
+	            <header>
+    	            <button name='action_create_patient' class="oe_highlight" type='object' string='Create patient' attrs="{'invisible': [('is_company','=',True)]}"/>
+                </header>
+            </xpath>
         </field>
 	</record>
 </odoo>

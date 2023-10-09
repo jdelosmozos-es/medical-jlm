@@ -4,6 +4,7 @@ class Partner(models.Model):
     _inherit = 'res.partner'
     
     is_patient = fields.Boolean(compute='_compute_patient')
+    authorized_users = fields.Many2many(comodel_name='res.users')
     
     @api.depends('name')
     def _compute_patient(self):
@@ -37,3 +38,19 @@ class Partner(models.Model):
         }
         return result
     
+    def action_create_patient(self):
+        self.ensure_one()
+        res = self.env['medical.patient'].create(
+            {'partner': self.id,
+             'state': 'initial'
+                })
+        return {
+                'name':_("Patient"),
+                'view_mode': 'form',
+                'res_model': 'medical.patient',
+                'res_id': res.id,
+                'type': 'ir.actions.act_window',
+                'nodestroy': True,
+                'target': 'current',
+                'domain': '[]',
+            }

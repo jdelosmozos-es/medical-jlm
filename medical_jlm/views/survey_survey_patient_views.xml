@@ -7,12 +7,9 @@
             <group name="options" position="inside">
                 <group name="medical_options" string="Patient">
                     <field name="add_answers_to_patient" />
-<!--
-                    <field
-                        name="email_question"
-                        attrs="{'invisible': [('add_answers_to_patient', '=', False)]}"
-                    />
--->
+					<p class="oe_grey" attrs="{'invisible': [('add_answers_to_patient', '=', False)]}">
+    					The information provided in 'Save as email' question will be used to identify the patient
+      				</p>
                     <field
                         name="patient_tag_ids"
                         widget="many2many_tags"

@@ -829,7 +829,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_calendar_availability__name
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_therapy__name
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__activity_calendar_event_id

@@ -11,6 +11,7 @@
         		<field name="is_couple"/>
         		<field name="couple" attrs="{'invisible': [('is_couple','=',True)]}"/>
         		<field name="couple_counterpart" attrs="{'invisible': [('is_couple','=',True)]}"/>
+        		<field name="state"/>
         	</tree>
         </field>
     </record>
@@ -20,14 +21,19 @@
         <field name="model">medical.patient</field>
         <field name="arch" type="xml">
         	<form>
+        		<header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                </header>
         		<sheet>
         		<group>
         			<field name="is_couple"/>
 	        		<field name="name" attrs="{'invisible': [('is_couple','=',False)]}"/>
 	        		<field name="partner" attrs="{'invisible': [('is_couple','=',True)]}"/>
+	        		<field name="tags" widget="many2many_tags"/>
 	        		<field name="couple" attrs="{'invisible': [('is_couple','=',True)]}"/>
 	        		<field name="couple_counterpart" attrs="{'invisible': [('is_couple','=',True)]}"/>
 	        		<field name="therapist"/>
+	        		<field name="therapy"/>
 	        	</group>
 	        	<group string="Couple members" attrs="{'invisible': [('is_couple','=',False)]}">
 	        		<field name="couple_member_1" nolabel="1"/>
@@ -57,13 +63,6 @@
         <field name="name">Patients</field>
         <field name="res_model">medical.patient</field>
         <field name="view_mode">tree,form</field>
-<!-- 
-        <field name="context">{
-            'search_default_department_id': [active_id],
-            'default_department_id': active_id}
-        </field>
- -->
-    <!--     <field name="view_id"></field>  --> <!-- force empty -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new patient.
@@ -123,11 +122,12 @@
         </field>
 	</record>
 	
-		<record id="medical_therapy_tree_view" model="ir.ui.view">
+	<record id="medical_therapy_tree_view" model="ir.ui.view">
 		<field name="name">medical.therapy.tree.view</field>
         <field name="model">medical.therapist.therapy</field>
         <field name="arch" type="xml">
         	<tree>
+        		<field name="sequence" widget="handle"/>
         		<field name="name" />
         	</tree>
         </field>
@@ -148,6 +148,16 @@
         </field>
     </record>
  
+ 	<record id="medical_patient_tag_tree_view" model="ir.ui.view">
+		<field name="name">medical.patient.tag.tree.view</field>
+        <field name="model">medical.patient.tag</field>
+        <field name="arch" type="xml">
+        	 <tree string="Patient Tags" editable="top">
+                    <field name="name"/>
+                    <field name="color" widget="color_picker"/>
+             </tree>
+        </field>
+    </record>
      	
 	<record id="medical_action_therapies" model="ir.actions.act_window">
         <field name="name">Therapies</field>
@@ -160,6 +170,17 @@
         </field>
 	</record>
 	
+	<record id="medical_action_patient_tags" model="ir.actions.act_window">
+        <field name="name">Patient tags</field>
+        <field name="res_model">medical.patient.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new tag.
+            </p>
+        </field>
+	</record>
+	
 	<menuitem id="medical_root" name="Medical" sequence="90" groups="base.group_user" 
 		action="medical_action_patients" web_icon="medical_jlm,static/description/icon.png"/>
 	<menuitem id="medical_patients" name="Patients" sequence="10" groups="base.group_user" 
@@ -168,5 +189,7 @@
 		parent = "medical_root" action="medical_action_therapists"/>
  	<menuitem id="medical_therapies" name="Therapies" sequence="30" groups="base.group_user" 
 		parent = "medical_root" action="medical_action_therapies"/>
- 
+    <menuitem id="medical_patient_tags" name="Patient tags" sequence="40" groups="base.group_user" 
+		parent = "medical_root" action="medical_action_patient_tags"/>
+		
 </odoo>

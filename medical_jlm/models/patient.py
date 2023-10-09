@@ -18,6 +18,9 @@ class Patient(models.Model):
     couple = fields.Many2one(comodel_name='medical.patient', compute='_compute_couple')
     couple_counterpart = fields.Many2one(comodel_name='medical.patient', compute='_compute_couple')
     patient_provided_info = fields.One2many(comodel_name='medical.patient.data', inverse_name='patient', readonly=True)
+    tags = fields.Many2many(comodel_name='medical.patient.tag')
+    therapy = fields.Many2one(comodel_name='medical.therapist.therapy', ondelete='restrict', domain="[('therapist','=',therapist)]")
+    state = fields.Selection(selection=[('initial','Initial'),('active','Active'),('stand_by','Stand by'),('finished','Finished')], default='initial', )
     
     def name_get(self):
         result = []

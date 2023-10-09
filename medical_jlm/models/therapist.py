@@ -7,7 +7,7 @@ class Therapist(models.Model):
     
     partner = fields.Many2one(comodel_name='res.partner', required=True, ondelete='restrict')
 #    agenda
-    therapies = fields.Many2many(comodel_name='medical.therapist.therapy')
+    therapies = fields.Many2many(comodel_name='medical.therapist.therapy', relation='therapy_therapist_rel', column1='therapy', column2='therapist')
     patients = fields.One2many(comodel_name='medical.patient', inverse_name='therapist')
     description = fields.Text()
     availability = fields.Many2one(comodel_name='medical.therapist.calendar', readonly=True)
@@ -27,3 +27,6 @@ class Therapy(models.Model):
     
     name = fields.Char(required=True)
     description = fields.Text()
+    sequence = fields.Integer(string = "Sequence")
+    therapist = fields.Many2many(comodel_name='medical.therapist',  relation='therapy_therapist_rel', column2='therapy', column1='therapist')
+    

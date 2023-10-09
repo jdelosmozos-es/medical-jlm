@@ -10,14 +10,14 @@ class SurveyUserInput(models.Model):
     
     def _mark_done(self):
         """Prepare and add the data to the patient"""
-        res = super()._mark_done()
+        super(SurveyUserInput, self)._mark_done()
         if not self.survey_id.add_answers_to_patient:
-            return res
+            return
         patient = self._get_patient()
         if patient:
             patient.write({'patient_provided_info': self._prepare_patient_data(patient)})
         # self._create_opportunity_post_process()
-        return res
+        return
     
     def _get_patient(self):
 #        email_question = self.survey_id.email_question
