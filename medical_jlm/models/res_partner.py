@@ -4,7 +4,8 @@ class Partner(models.Model):
     _inherit = 'res.partner'
     
     is_patient = fields.Boolean(compute='_compute_patient')
-    authorized_users = fields.Many2many(comodel_name='res.users')
+    authorized_users_crm = fields.Many2many(comodel_name='res.users', relation='auth_crm_users')
+    authorized_users_therapists = fields.Many2many(comodel_name='res.users', relation='auth_therapist_users')
     
     @api.depends('name')
     def _compute_patient(self):

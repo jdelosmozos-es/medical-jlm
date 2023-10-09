@@ -7,3 +7,4 @@ from . import survey_user_input_partner
 from . import survey_survey_partner
 from . import survey_survey_patient
 from . import patient_tag
+from . import crm

@@ -44,6 +44,11 @@ class Patient(models.Model):
             if record.partner.is_company:
                 raise UserError(_('A company cannot be a patient.'))
             
+    _sql_constraints = [
+        ('patient_partner_unique', 'UNIQUE(partner)',
+         _('Only one patient for every partner is allowed.')),
+    ]
+            
     @api.depends('couple')
     def _compute_couple(self):
         for record in self:
@@ -60,7 +65,62 @@ class Patient(models.Model):
             else:
                 record.couple_counterpart = False
                 
-class PatientProvidedData(models.Model):
+    def _add_therapist_user(self, therapist_id):
+        user_ids = self.env['medical.therapist'].browse(therapist_id).partner.user_ids.ids
+        for user_id in user_ids:
+            if user_id not in self.partner.authorized_users_therapists.ids:
+                self.partner.write({'authorized_users_therapists': [(4,user_id,0)]})
+            
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'therapist' in vals and 'partner' in vals:
+                if vals.get('is_couple',False):
+                    self.browse(vals['couple_member_1'])._add_therapist_user(vals['therapist'])
+                    self.browse(vals['couple_member_2'])._add_therapist_user(vals['therapist'])
+                else:
+                    self._add_therapist_user(vals['therapist'])
+        return super(Patient, self).create(vals_list)
+    
+    def write(self, vals):
+        for record in self:
+            if not record.therapist or not record.partner:
+                therapist_id = record.therapist.id or vals.get('therapist',False)
+                partner_id = record.partner.id or vals.get('partner',False)
+                is_couple = record.is_couple or vals.get('is_couple',False)
+                if therapist_id and partner_id:
+                    if is_couple:
+                        record.browse(vals['couple_member_1'])._add_therapist_user(vals['therapist'])
+                        record.browse(vals['couple_member_1'])._add_therapist_user(vals['therapist'])
+                    else:
+                        record._add_therapist_user(vals['therapist'])
+            else:
+                record._reset_partner_auth_users(vals=vals)
+        return super(Patient, self).write(vals)
+
+    def unlink(self):
+        for record in self:
+            record._reset_partner_auth_users()
+        return super(Patient, self).unlink()
+                 
+    def _reset_partner_auth_users(self, vals=False):
+        ''' Compute authorized users for partner excluding self and reset them '''
+        if self.is_couple:
+            if not self.therapist == self.browse(self.couple_member_1).therapist:
+                self.couple_member_1.partner.write({'authorized_users_therapists': [(3,user_id,0) for user_id in self.therapist.partner.user_ids.ids]})
+            if not self.therapist == self.browse(self.couple_member_2).therapist:
+                self.couple_member_2.partner.write({'authorized_users_therapists': [(3,user_id,0) for user_id in self.therapist.partner.user_ids.ids]})
+        else:
+            self.partner.write({'authorized_users_therapists': False})
+        if vals and vals.get('therapist',False):
+            is_couple = self.is_couple or vals.get('is_couple',False)
+            if is_couple:
+                self.browse(vals['couple_member_1'])._add_therapist_user(vals['therapist'])
+                self.browse(vals['couple_member_1'])._add_therapist_user(vals['therapist'])
+            else:
+                self._add_therapist_user(vals['therapist'])
+        
+class PatientProvidedDataself(models.Model):
     _name = 'medical.patient.data'
     _description = 'Data provided by the patient directly'
     

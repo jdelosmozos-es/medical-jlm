@@ -46,6 +46,16 @@ msgid "A patient must be a person or a couple"
 msgstr "Un paciente debe ser una persona o una pareja."
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__property_account_payable_id
+msgid "Account Payable"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__property_account_receivable_id
+msgid "Account Receivable"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__message_needaction
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__message_needaction
 msgid "Action Needed"
@@ -55,6 +65,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient_tag__active
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__active
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_calendar__active
+#: model:ir.model.fields.selection,name:medical_jlm.selection__medical_patient__state__active
 msgid "Active"
 msgstr "Activo"
 
@@ -96,6 +107,11 @@ msgstr "Añadir las respuestas al paciente"
 #: model:ir.model.fields,help:medical_jlm.field_survey_survey__add_answers_to_patient
 msgid "Add survey answers to patient information"
 msgstr "Añadir las respuestas como información del paciente"
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_survey_survey__partner_tags
+msgid "Add these tags to partner created when survey is submitted"
+msgstr "Añadir estas etiquetas al contacto creado a partir de la encuesta."
 
 #. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_survey_survey__patient_tag_ids
@@ -149,6 +165,20 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__authorized_users_crm
+#: model:ir.model.fields,field_description:medical_jlm.field_res_partner__authorized_users_crm
+#: model:ir.model.fields,field_description:medical_jlm.field_res_users__authorized_users_crm
+msgid "Authorized Users Crm"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__authorized_users_therapists
+#: model:ir.model.fields,field_description:medical_jlm.field_res_partner__authorized_users_therapists
+#: model:ir.model.fields,field_description:medical_jlm.field_res_users__authorized_users_therapists
+msgid "Authorized Users Therapists"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__availability
 msgid "Availability"
 msgstr "Disponibilidad"
@@ -190,6 +220,11 @@ msgid ""
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__bank_account_count
+msgid "Bank"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__bank_ids
 msgid "Banks"
 msgstr ""
@@ -224,6 +259,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_calendar_availability__two_weeks_calendar
 msgid "Calendar in 2 weeks mode"
 msgstr "Calendario en modo 2 semanas"
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__can_publish
+msgid "Can Publish"
+msgstr ""
 
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__certifications_count
@@ -285,6 +325,11 @@ msgstr ""
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__commercial_partner_id
 msgid "Commercial Entity"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__ref_company_ids
+msgid "Companies that refers to partner"
 msgstr ""
 
 #. module: medical_jlm
@@ -375,9 +420,19 @@ msgid "Couple members"
 msgstr "Miembros de la pareja"
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_survey_survey__create_partner_from_answers
+msgid "Create Partner From Answers"
+msgstr "Crear contacto"
+
+#. module: medical_jlm
 #: model_terms:ir.actions.act_window,help:medical_jlm.medical_action_patients
 msgid "Create a new patient."
 msgstr "Crear un nuevo paciente."
+
+#. module: medical_jlm
+#: model_terms:ir.actions.act_window,help:medical_jlm.medical_action_patient_tags
+msgid "Create a new tag."
+msgstr ""
 
 #. module: medical_jlm
 #: model_terms:ir.actions.act_window,help:medical_jlm.medical_action_therapists
@@ -388,6 +443,16 @@ msgstr "Crear un nuevo terapeuta"
 #: model_terms:ir.actions.act_window,help:medical_jlm.medical_action_therapies
 msgid "Create a new therapy."
 msgstr "Crear una nueva terapia."
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_survey_survey__create_partner_from_answers
+msgid "Create partner from answers."
+msgstr "Crear contacto"
+
+#. module: medical_jlm
+#: model_terms:ir.ui.view,arch_db:medical_jlm.res_partner_patient_form_view
+msgid "Create patient"
+msgstr "Crear paciente"
 
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__create_uid
@@ -417,6 +482,21 @@ msgid "Credit Limit"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__property_payment_term_id
+msgid "Customer Payment Terms"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__customer_rank
+msgid "Customer Rank"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model,name:medical_jlm.model_medical_patient_data
 msgid "Data provided by the patient directly"
 msgstr "Información proporcionada directamente por el paciente"
@@ -435,7 +515,12 @@ msgstr "Periodo del día"
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_calendar_availability__dayofweek
 msgid "Day of Week"
-msgstr "Día de la semana"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__trust
+msgid "Degree of trust you have in this debtor"
+msgstr ""
 
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__description
@@ -500,6 +585,16 @@ msgid ""
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields.selection,name:medical_jlm.selection__medical_patient__state__finished
+msgid "Finished"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__property_account_position_id
+msgid "Fiscal Position"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__message_follower_ids
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__message_follower_ids
 msgid "Followers"
@@ -551,6 +646,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__has_message
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__has_message
 msgid "Has Message"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__has_unreconciled_entries
+msgid "Has Unreconciled Entries"
 msgstr ""
 
 #. module: medical_jlm
@@ -690,10 +790,25 @@ msgid "Information from patient"
 msgstr "Información del paciente"
 
 #. module: medical_jlm
+#: model:ir.model.fields.selection,name:medical_jlm.selection__medical_patient__state__initial
+msgid "Initial"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__invoice_warn
+msgid "Invoice"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_medical_therapist__type
 msgid ""
 "Invoice & Delivery addresses are used in sales orders. Private addresses are"
 " only visible by authorized users."
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__invoice_ids
+msgid "Invoices"
 msgstr ""
 
 #. module: medical_jlm
@@ -717,7 +832,12 @@ msgstr "Es para la pareja"
 #: model:ir.model.fields,field_description:medical_jlm.field_res_partner__is_patient
 #: model:ir.model.fields,field_description:medical_jlm.field_res_users__is_patient
 msgid "Is Patient"
-msgstr "Es un paciente"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__is_published
+msgid "Is Published"
+msgstr ""
 
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__is_company
@@ -727,6 +847,11 @@ msgstr ""
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__function
 msgid "Job Position"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__journal_item_count
+msgid "Journal Items"
 msgstr ""
 
 #. module: medical_jlm
@@ -773,6 +898,24 @@ msgid "Last notification marked as read from base Calendar"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__last_time_entries_checked
+msgid ""
+"Last time the invoices & payments matching was performed for this partner. "
+"It is set either if there's not at least an unreconciled debit and an "
+"unreconciled credit or if you click the \"Done\" button."
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model,name:medical_jlm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__message_main_attachment_id
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__message_main_attachment_id
 msgid "Main Attachment"
@@ -792,6 +935,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__message_has_error
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__message_has_error
 msgid "Message Delivery error"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__invoice_warn_msg
+msgid "Message for Invoice"
 msgstr ""
 
 #. module: medical_jlm
@@ -907,6 +1055,23 @@ msgid "One couple should have two members"
 msgstr "Una pareja debe tener dos miembros."
 
 #. module: medical_jlm
+#: code:addons/medical_jlm/models/patient.py:0
+#: model:ir.model.constraint,message:medical_jlm.constraint_medical_patient_patient_partner_unique
+#, python-format
+msgid "Only one patient for every partner is allowed."
+msgstr "No puede haber más de un paciente para un contacto."
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__opportunity_ids
+msgid "Opportunities"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__opportunity_count
+msgid "Opportunity"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__parent_name
 msgid "Parent name"
 msgstr ""
@@ -918,13 +1083,26 @@ msgid "Partner"
 msgstr "Contacto"
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__contract_ids
+msgid "Partner Contracts"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_survey_survey__partner_tags
+msgid "Partner Tags"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__same_vat_partner_id
 msgid "Partner with same Tax ID"
 msgstr ""
 
 #. module: medical_jlm
+#: code:addons/medical_jlm/models/res_partner.py:0
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient_data__patient
 #: model_terms:ir.ui.view,arch_db:medical_jlm.survey_form
+#: model_terms:ir.ui.view,arch_db:medical_jlm.survey_partner_form
+#, python-format
 msgid "Patient"
 msgstr "Paciente"
 
@@ -939,9 +1117,20 @@ msgid "Patient Tag"
 msgstr "Etiqueta de paciente"
 
 #. module: medical_jlm
+#: model_terms:ir.ui.view,arch_db:medical_jlm.medical_patient_tag_tree_view
+msgid "Patient Tags"
+msgstr "Etiquetas de paciente"
+
+#. module: medical_jlm
 #: model_terms:ir.ui.view,arch_db:medical_jlm.medical_patient_form_view
 msgid "Patient provided information"
 msgstr "Información proporcionada por el paciente"
+
+#. module: medical_jlm
+#: model:ir.actions.act_window,name:medical_jlm.medical_action_patient_tags
+#: model:ir.ui.menu,name:medical_jlm.medical_patient_tags
+msgid "Patient tags"
+msgstr "Etiquetas de paciente"
 
 #. module: medical_jlm
 #: code:addons/medical_jlm/models/res_partner.py:0
@@ -954,6 +1143,21 @@ msgid "Patients"
 msgstr "Pacientes"
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__debit_limit
+msgid "Payable Limit"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__payment_token_count
+msgid "Payment Token Count"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__payment_token_ids
+msgid "Payment Tokens"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__phone
 msgid "Phone"
 msgstr ""
@@ -961,6 +1165,11 @@ msgstr ""
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__phone_sanitized_blacklisted
 msgid "Phone Blacklisted"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_survey_survey__phone_question
+msgid "Phone Question"
 msgstr ""
 
 #. module: medical_jlm
@@ -972,6 +1181,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__property_product_pricelist
 msgid "Pricelist"
 msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_survey_survey__phone_question
+msgid "Question which answer should be used as partner phone."
+msgstr "Pregunta que contendrá el teléfono del contacto."
 
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__ref
@@ -992,6 +1206,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__activity_user_id
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__activity_user_id
 msgid "Responsible User"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__website_id
+msgid "Restrict publishing to this website."
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__is_seo_optimized
+msgid "SEO optimized"
 msgstr ""
 
 #. module: medical_jlm
@@ -1016,12 +1240,26 @@ msgid "Sanitized Number"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__invoice_warn
+msgid ""
+"Selecting the \"Warning\" option will notify user with the message, "
+"Selecting \"Blocking Message\" will throw an exception with the message and "
+"block the flow. The Message has to be written in the next field."
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__self
 msgid "Self"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__seo_name
+msgid "Seo name"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_calendar_availability__sequence
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_therapy__sequence
 msgid "Sequence"
 msgstr ""
 
@@ -1056,6 +1294,11 @@ msgid "Signup URL"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields.selection,name:medical_jlm.selection__medical_patient__state__stand_by
+msgid "Stand by"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_medical_therapist_calendar_availability__hour_from
 msgid ""
 "Start and End time of working.\n"
@@ -1068,6 +1311,7 @@ msgid "Starting Date"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__state
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__state_id
 msgid "State"
 msgstr "Estado"
@@ -1098,6 +1342,11 @@ msgid "Street2"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__supplier_rank
+msgid "Supplier Rank"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model,name:medical_jlm.model_survey_survey
 msgid "Survey"
 msgstr ""
@@ -1118,6 +1367,7 @@ msgid "Switch to 2 weeks calendar"
 msgstr "Cambiar a agenda de dos semanas"
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__tags
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__category_id
 msgid "Tags"
 msgstr "Etiquetas"
@@ -1147,12 +1397,62 @@ msgid ""
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__property_account_position_id
+msgid ""
+"The fiscal position determines the taxes/accounts used for this contact."
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__website_url
+msgid "The full URL to access the document through the website."
+msgstr ""
+
+#. module: medical_jlm
+#: model_terms:ir.ui.view,arch_db:medical_jlm.survey_partner_form
+msgid ""
+"The information provided in 'Save as email' question will be used as contact"
+" email."
+msgstr ""
+"Se usará como email del contacto la respuesta a la pregunta marcada como 'Guardar como correo electŕonico de usuario'"
+
+#. module: medical_jlm
+#: model_terms:ir.ui.view,arch_db:medical_jlm.survey_form
+msgid ""
+"The information provided in 'Save as email' question will be used to "
+"identify the patient"
+msgstr ""
+"La respuesta a la pregunta marcada como 'Guardar como correo electŕonico de usuario' se usará para identificar al paciente."
+
+#. module: medical_jlm
+#: model_terms:ir.ui.view,arch_db:medical_jlm.survey_partner_form
+msgid ""
+"The information provided in 'Save as nickname' question will be used as "
+"contact name."
+msgstr ""
+"Se usará como nombre del contacto la respuesta a la pregunta marcada como 'Guardar como apodo de usuario'"
+
+#. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_medical_therapist__user_id
 msgid "The internal user in charge of this contact."
 msgstr ""
 
 #. module: medical_jlm
-#: code:addons/medical_jlm/models/survey_survey.py:0
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__has_unreconciled_entries
+msgid ""
+"The partner has at least one unreconciled debit and credit since last time "
+"the invoices & payments matching was performed."
+msgstr ""
+
+#. module: medical_jlm
+#: code:addons/medical_jlm/models/survey_survey_partner.py:0
+#, python-format
+msgid ""
+"Ther should be one question for the user email and one for the user name "
+"(nickname will be used)."
+msgstr ""
+
+#. module: medical_jlm
+#: code:addons/medical_jlm/models/survey_survey_patient.py:0
 #, python-format
 msgid "Ther should be one question for the user email."
 msgstr "Debe haber una pregunta con el email del usuario."
@@ -1167,6 +1467,7 @@ msgstr "Terapias"
 #. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__therapist
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_calendar__therapist
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist_therapy__therapist
 msgid "Therapist"
 msgstr "Terapeuta"
 
@@ -1192,6 +1493,25 @@ msgid "Therapists availability"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_patient__therapy
+msgid "Therapy"
+msgstr "Terapia"
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__property_account_payable_id
+msgid ""
+"This account will be used instead of the default one as the payable account "
+"for the current partner"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__property_account_receivable_id
+msgid ""
+"This account will be used instead of the default one as the receivable "
+"account for the current partner"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_medical_therapist_calendar__tz
 msgid ""
 "This field is used in order to define in which timezone the resources will "
@@ -1203,6 +1523,20 @@ msgstr ""
 msgid ""
 "This field is used to search on email address as the primary email field can"
 " contain more than strictly an email address."
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__property_supplier_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for purchase "
+"orders and vendor bills"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__property_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for sales orders "
+"and customer invoices"
 msgstr ""
 
 #. module: medical_jlm
@@ -1235,6 +1569,31 @@ msgid "Title"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__total_invoiced
+msgid "Total Invoiced"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__debit
+msgid "Total Payable"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__credit
+msgid "Total Receivable"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__credit
+msgid "Total amount this customer owes you."
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__debit
+msgid "Total amount you have to pay to this vendor."
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_medical_patient__activity_exception_decoration
 #: model:ir.model.fields,help:medical_jlm.field_medical_therapist__activity_exception_decoration
 msgid "Type of the exception activity on record."
@@ -1263,13 +1622,43 @@ msgid "Use a barcode to identify this contact."
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__user_livechat_username
+msgid "User Livechat Username"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__user_ids
 msgid "Users"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,help:medical_jlm.field_medical_therapist__currency_id
+msgid "Utility field to express amount currency"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__vat
 msgid "VAT/Tax ID"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__property_supplier_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_published
+msgid "Visible on current website"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__visitor_ids
+msgid "Visitors"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_id
+msgid "Website"
 msgstr ""
 
 #. module: medical_jlm
@@ -1284,9 +1673,44 @@ msgid "Website Messages"
 msgstr ""
 
 #. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_description
+msgid "Website Partner Full Description"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_short_description
+msgid "Website Partner Short Description"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_url
+msgid "Website URL"
+msgstr ""
+
+#. module: medical_jlm
 #: model:ir.model.fields,help:medical_jlm.field_medical_patient__website_message_ids
 #: model:ir.model.fields,help:medical_jlm.field_medical_therapist__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_meta_description
+msgid "Website meta description"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_meta_keywords
+msgid "Website meta keywords"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_meta_title
+msgid "Website meta title"
+msgstr ""
+
+#. module: medical_jlm
+#: model:ir.model.fields,field_description:medical_jlm.field_medical_therapist__website_meta_og_img
+msgid "Website opengraph image"
 msgstr ""
 
 #. module: medical_jlm

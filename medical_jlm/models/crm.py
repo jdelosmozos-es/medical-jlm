@@ -5,19 +5,40 @@ class Lead(models.Model):
         
     @api.model_create_multi
     def create(self, vals_list):
-        import sys;sys.path.append(r'/home/javier/.var/app/org.eclipse.Java/eclipse/plugins/org.python.pydev.core_10.2.1.202307021217/pysrc')
-        import pydevd;pydevd.settrace('127.0.0.1',port=9999)
         Partner = self.env['res.partner']
         for vals in vals_list:
             if 'user_id' in vals and 'partner_id' in vals:
-                if vals['user_id'] not in Partner.browse(vals['partner_id']).authorized_users:
-                    Partner.browse(vals['partner_id']).write({'authorized_users': [(4,vals['user_id'],0)]})
+                if vals['user_id'] not in Partner.browse(vals['partner_id']).authorized_users_crm.ids:
+                    Partner.browse(vals['partner_id']).write({'authorized_users_crm': [(4,vals['user_id'],0)]})
         return super(Lead, self).create(vals_list)
     
     def write(self, vals):
+        Partner = self.env['res.partner']
         for record in self:
-            if record.user_id and record.partner_id:
-                Ver qué pasa si antes no tenía alguno de los dos y ahora sí y al revés.
-                Poner es igual que crear.
-                Para quitar tengo que comprobar todo lo del usuario. Debería ser un método del usuario, porque puede depender de otros modelos (paciente)
+            if not record.user_id or not record.partner_id:
+                user_id = record.user_id.id or vals.get('user_id',False)
+                partner_id = record.partner_id.id or vals.get('partner_id',False)
+                if user_id and partner_id:
+                    if user_id not in Partner.browse(partner_id).authorized_users_crm.ids:
+                        Partner.browse(partner_id).write({'authorized_users_crm': [(4,user_id,0)]})
+            else:
+                record._reset_partner_auth_users(vals=vals)
+                    
         return super(Lead, self).write(vals)
+
+    def unlink(self):
+        for record in self:
+            record._reset_partner_auth_users()
+        return super(Lead, self).unlink()
+    
+    def _reset_partner_auth_users(self, vals=False):
+        ''' Compute authorized users for partner excluding self and reset them '''
+        Partner = self.env['res.partner']
+        users = self.search([('partner_id','=',self.partner_id.id),('id','!=',self.id)]).mapped('user_id')
+        if vals and vals.get('user_id',False):
+            users |= vals['user_id']
+        if not users:
+            Partner.browse(self.partner_id.id).sudo().write({'authorized_users_crm': False})
+        else:
+            Partner.browse(self.partner_id.id).sudo().write({'authorized_users_crm': [(6,0,users.ids)]})
+                

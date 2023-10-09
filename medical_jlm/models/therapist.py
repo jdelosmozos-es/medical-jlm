@@ -5,7 +5,7 @@ class Therapist(models.Model):
     _inherits = {'res.partner': 'partner'}
     _description = 'Model to manage therapist information.'
     
-    partner = fields.Many2one(comodel_name='res.partner', required=True, ondelete='restrict')
+    partner = fields.Many2one(comodel_name='res.partner', required=True, ondelete='restrict', domain="[('user_ids','!=',False)]")
 #    agenda
     therapies = fields.Many2many(comodel_name='medical.therapist.therapy', relation='therapy_therapist_rel', column1='therapy', column2='therapist')
     patients = fields.One2many(comodel_name='medical.patient', inverse_name='therapist')
