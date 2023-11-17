@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models
 
 class SurveyUserInput(models.Model):
     _inherit = "survey.user_input"
@@ -9,6 +9,7 @@ class SurveyUserInput(models.Model):
         if not self.survey_id.create_partner_from_answers or not self.opportunity_id:
             return
         phone_question = self.survey_id.phone_question
+        phone = False
         for line in self.user_input_line_ids:
             if line.question_id == phone_question:
                 phone = line.value_char_box
